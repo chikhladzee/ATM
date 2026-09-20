@@ -22,11 +22,9 @@ MainMenu mainMenu = new MainMenu(clientMenu, adminMenu);
 
 while (true)
 {
-  User? currentUser =
-    authMenu.Show();
+  User? currentUser = authMenu.Show();
 
-  if (currentUser is null)
-    break;
+  if (currentUser is null) break;
 
   mainMenu.Show(currentUser);
 }

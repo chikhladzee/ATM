@@ -1,11 +1,5 @@
 [
   {
-    "Id": "cde38737-2e36-45f1-a6d7-40f0399c9d91",
-    "Username": "amiko",
-    "PasswordHash": "$2a$11$/igyhcvx8kHXH9E897fcpO8rhjfaAE4QwijJYKHWhyAqU7rrlZQPS",
-    "Role": 0
-  },
-  {
     "Id": "a7f8167b-4ef7-4299-986b-27533b65fabb",
     "Username": "admin",
     "PasswordHash": "$2a$11$VXPTWUn0UUCxfToMJG3xkOUFHBuR6dDizyW.H8kExTOrToi1sVin.",
