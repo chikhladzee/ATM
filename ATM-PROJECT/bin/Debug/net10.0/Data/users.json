@@ -1,0 +1,14 @@
+[
+  {
+    "Id": "d6529bb3-3618-44fd-ae1e-1458fec477bd",
+    "Username": "admin",
+    "PasswordHash": "$2a$11$q9mifaHkDG/xS7SI3WoTHOlucr4/HWij7XIsG30B1A14QTQMU99dy",
+    "Role": 1
+  },
+  {
+    "Id": "b0b56e62-943c-4d50-a472-0e423b311e33",
+    "Username": "amiko",
+    "PasswordHash": "$2a$11$PsfL2ahWq0z8jTJ2pbbxpebzdXilKfgWS4LtK7Wz6P.h.xYicoASe",
+    "Role": 0
+  }
+]

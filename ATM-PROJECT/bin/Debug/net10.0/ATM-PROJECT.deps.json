@@ -1,0 +1,75 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ATM-PROJECT/1.0.0": {
+        "dependencies": {
+          "BCrypt.Net-Next": "4.2.0",
+          "Spectre.Console": "0.57.3-alpha.0.19"
+        },
+        "runtime": {
+          "ATM-PROJECT.dll": {}
+        }
+      },
+      "BCrypt.Net-Next/4.2.0": {
+        "runtime": {
+          "lib/net10.0/BCrypt-Net-Next.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.2.0.0"
+          }
+        }
+      },
+      "Spectre.Console/0.57.3-alpha.0.19": {
+        "dependencies": {
+          "Spectre.Console.Ansi": "0.57.3-alpha.0.19"
+        },
+        "runtime": {
+          "lib/net10.0/Spectre.Console.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.57.3.0"
+          }
+        }
+      },
+      "Spectre.Console.Ansi/0.57.3-alpha.0.19": {
+        "runtime": {
+          "lib/net10.0/Spectre.Console.Ansi.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.57.3.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ATM-PROJECT/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BCrypt.Net-Next/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gwLD2KfCuwQesP17aVh4h6lpiMPEVt5Lbpndo0ej903hNUUTtyxt3ARdDjmuydBRTAUICc7OVKVbaOvc6SQYXA==",
+      "path": "bcrypt.net-next/4.2.0",
+      "hashPath": "bcrypt.net-next.4.2.0.nupkg.sha512"
+    },
+    "Spectre.Console/0.57.3-alpha.0.19": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5eXVyQx77rDcV6Ya8vIPGP0ePQ/6tC/Crq78Z1JXPtVlm7JeaRrsUG9YCxNeHggEPjgS5LZTYibiP+0nXY50dA==",
+      "path": "spectre.console/0.57.3-alpha.0.19",
+      "hashPath": "spectre.console.0.57.3-alpha.0.19.nupkg.sha512"
+    },
+    "Spectre.Console.Ansi/0.57.3-alpha.0.19": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7gN3JJLvyCM/xMmA1MhSoj5tPC2UxoRXLZ0sULPAKj/PmLHla2EHl4JimjoOzdk+RV0W6TmL2eSm1zmtdFdnOA==",
+      "path": "spectre.console.ansi/0.57.3-alpha.0.19",
+      "hashPath": "spectre.console.ansi.0.57.3-alpha.0.19.nupkg.sha512"
+    }
+  }
+}

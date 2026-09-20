@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "OhX25VO219E=",
+  "success": true,
+  "projectFilePath": "/home/amiko/Desktop/ATM-PROJECT/ATM-PROJECT/ATM-PROJECT.csproj",
+  "expectedPackageFiles": [
+    "/home/amiko/.nuget/packages/bcrypt.net-next/4.2.0/bcrypt.net-next.4.2.0.nupkg.sha512",
+    "/home/amiko/.nuget/packages/spectre.console/0.57.3-alpha.0.19/spectre.console.0.57.3-alpha.0.19.nupkg.sha512",
+    "/home/amiko/.nuget/packages/spectre.console.ansi/0.57.3-alpha.0.19/spectre.console.ansi.0.57.3-alpha.0.19.nupkg.sha512"
+  ],
+  "logs": []
+}
