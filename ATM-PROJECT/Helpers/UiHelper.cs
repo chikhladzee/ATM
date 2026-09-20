@@ -41,8 +41,7 @@ public static class UiHelper
   {
     AnsiConsole.WriteLine();
 
-    AnsiConsole.MarkupLine(
-      "[grey]Press any key to continue...[/]");
+    AnsiConsole.MarkupLine("[grey]Press any key to continue...[/]");
 
     Console.ReadKey(true);
   }

@@ -31,8 +31,7 @@ public class AccountRepository : IAccountRepository
           return new List<Account>();
         }
 
-        return JsonSerializer.Deserialize<List<Account>>(json)
-               ?? new List<Account>();
+        return JsonSerializer.Deserialize<List<Account>>(json) ?? new List<Account>();
       }
     }
     catch (Exception ex)
@@ -47,16 +46,14 @@ public class AccountRepository : IAccountRepository
   {
     List<Account> accounts = GetAll();
 
-    return accounts.FirstOrDefault(account =>
-      account.Id == id);
+    return accounts.FirstOrDefault(account => account.Id == id);
   }
 
   public Account? GetByUserId(Guid userId)
   {
     List<Account> accounts = GetAll();
 
-    return accounts.FirstOrDefault(account =>
-      account.UserId == userId);
+    return accounts.FirstOrDefault(account => account.UserId == userId);
   }
 
   public void Add(Account account)
@@ -72,13 +69,9 @@ public class AccountRepository : IAccountRepository
   {
     List<Account> accounts = GetAll();
 
-    Account? existingAccount =
-      accounts.FirstOrDefault(a => a.Id == account.Id);
+    Account? existingAccount = accounts.FirstOrDefault(a => a.Id == account.Id);
 
-    if (existingAccount is null)
-    {
-      return;
-    }
+    if (existingAccount is null) return;
 
     accounts[accounts.IndexOf(existingAccount)] = account;
 

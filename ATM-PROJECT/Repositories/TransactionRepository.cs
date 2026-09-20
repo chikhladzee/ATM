@@ -13,9 +13,7 @@ public class TransactionRepository : ITransactionRepository
   {
     _dataFolder = PathHelper.GetDataDirectory();
 
-    _filePath = Path.Combine(
-      _dataFolder,
-      "transactions.json");
+    _filePath = Path.Combine(_dataFolder, "transactions.json");
   }
 
   public List<Transaction> GetAll()
@@ -24,24 +22,18 @@ public class TransactionRepository : ITransactionRepository
     {
       EnsureFileExists();
 
-      using (StreamReader reader =
-             new StreamReader(_filePath))
+      using (StreamReader reader = new StreamReader(_filePath))
       {
         string json = reader.ReadToEnd();
 
-        if (string.IsNullOrWhiteSpace(json))
-        {
-          return new List<Transaction>();
-        }
+        if (string.IsNullOrWhiteSpace(json)) return new List<Transaction>();
 
-        return JsonSerializer.Deserialize<List<Transaction>>(json)
-               ?? new List<Transaction>();
+        return JsonSerializer.Deserialize<List<Transaction>>(json) ?? new List<Transaction>();
       }
     }
     catch (Exception ex)
     {
-      Console.WriteLine(
-        $"Error reading transactions: {ex.Message}");
+      Console.WriteLine($"Error reading transactions: {ex.Message}");
 
       return new List<Transaction>();
     }
@@ -51,8 +43,7 @@ public class TransactionRepository : ITransactionRepository
   {
     List<Transaction> transactions = GetAll();
 
-    return transactions.FirstOrDefault(
-      transaction => transaction.Id == id);
+    return transactions.FirstOrDefault(transaction => transaction.Id == id);
   }
 
   public List<Transaction> GetByUserId(Guid userId)
@@ -86,16 +77,14 @@ public class TransactionRepository : ITransactionRepository
           WriteIndented = true
         });
 
-      using (StreamWriter writer =
-             new StreamWriter(_filePath))
+      using (StreamWriter writer = new StreamWriter(_filePath))
       {
         writer.Write(json);
       }
     }
     catch (Exception ex)
     {
-      Console.WriteLine(
-        $"Error saving transactions: {ex.Message}");
+      Console.WriteLine($"Error saving transactions: {ex.Message}");
     }
   }
 

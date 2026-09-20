@@ -36,10 +36,7 @@ public class AuthMenu
         case "Login":
           User? user = Login();
 
-          if (user is not null)
-          {
-            return user;
-          }
+          if (user is not null) return user;
           break;
 
         case "Register":
@@ -54,14 +51,9 @@ public class AuthMenu
 
   private void ShowHeader()
   {
-    AnsiConsole.Write(
-      new FigletText("ATM")
-        .Centered()
-        .Color(Color.Aqua));
+    AnsiConsole.Write(new FigletText("ATM").Centered().Color(Color.Aqua));
 
-    AnsiConsole.Write(
-      new Rule("[grey]Secure Banking System[/]")
-        .RuleStyle("grey"));
+    AnsiConsole.Write(new Rule("[grey]Secure Banking System[/]").RuleStyle("grey"));
 
     AnsiConsole.WriteLine();
   }
@@ -70,9 +62,7 @@ public class AuthMenu
   {
     AnsiConsole.Clear();
 
-    AnsiConsole.Write(
-      new Rule("[green]Create Account[/]")
-        .RuleStyle("green"));
+    AnsiConsole.Write(new Rule("[green]Create Account[/]").RuleStyle("green"));
 
     AnsiConsole.WriteLine();
 

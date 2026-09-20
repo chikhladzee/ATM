@@ -14,10 +14,7 @@ public class TransactionService
     _transactionRepository = transactionRepository;
   }
 
-  public void CreateTransaction(
-    Guid userId,
-    TransactionType type,
-    decimal amount)
+  public void CreateTransaction(Guid userId, TransactionType type, decimal amount)
   {
     Transaction transaction = new Transaction
     {

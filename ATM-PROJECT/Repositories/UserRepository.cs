@@ -13,8 +13,7 @@ public class UserRepository : IUserRepository
   {
     _dataFolder = PathHelper.GetDataDirectory();
 
-    _filePath =
-      Path.Combine(_dataFolder, "users.json");
+    _filePath = Path.Combine(_dataFolder, "users.json");
   }
 
   public List<UserData> GetAll()
@@ -71,13 +70,9 @@ public class UserRepository : IUserRepository
   {
     List<UserData> users = GetAll();
 
-    UserData? existingUser =
-      users.FirstOrDefault(u => u.Id == user.Id);
+    UserData? existingUser = users.FirstOrDefault(u => u.Id == user.Id);
 
-    if (existingUser is null)
-    {
-      return;
-    }
+    if (existingUser is null) return;
 
     existingUser.Username = user.Username;
     existingUser.PasswordHash = user.PasswordHash;

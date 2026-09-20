@@ -76,13 +76,9 @@ public class ClientMenu
 
   private void ShowHeader(Client client)
   {
-    decimal balance =
-      _accountService.GetBalance(client.Id);
+    decimal balance = _accountService.GetBalance(client.Id);
 
-    AnsiConsole.Write(
-      new FigletText("ATM")
-        .Centered()
-        .Color(Color.Aqua));
+    AnsiConsole.Write(new FigletText("ATM").Centered().Color(Color.Aqua));
 
     AnsiConsole.WriteLine();
 
@@ -102,8 +98,7 @@ public class ClientMenu
   {
     try
     {
-      decimal balance =
-        _accountService.GetBalance(client.Id);
+      decimal balance = _accountService.GetBalance(client.Id);
 
       AnsiConsole.WriteLine();
 
@@ -127,9 +122,7 @@ public class ClientMenu
   {
     AnsiConsole.Clear();
 
-    AnsiConsole.Write(
-      new Rule("[green]Deposit Money[/]")
-        .RuleStyle("green"));
+    AnsiConsole.Write(new Rule("[green]Deposit Money[/]").RuleStyle("green"));
 
     AnsiConsole.WriteLine();
 
@@ -138,19 +131,14 @@ public class ClientMenu
         .Validate(value =>
         {
           if (value <= 0)
-          {
-            return ValidationResult.Error(
-              "[red]✖ Amount must be greater than zero.[/]");
-          }
+            return ValidationResult.Error("[red]✖ Amount must be greater than zero.[/]");
 
           return ValidationResult.Success();
         }));
 
     try
     {
-      _accountService.Deposit(
-        client.Id,
-        amount);
+      _accountService.Deposit(client.Id, amount);
 
       AnsiConsole.WriteLine();
 
@@ -166,9 +154,7 @@ public class ClientMenu
   {
     AnsiConsole.Clear();
 
-    AnsiConsole.Write(
-      new Rule("[yellow]Withdraw Money[/]")
-        .RuleStyle("yellow"));
+    AnsiConsole.Write(new Rule("[yellow]Withdraw Money[/]").RuleStyle("yellow"));
 
     AnsiConsole.WriteLine();
 
@@ -177,19 +163,14 @@ public class ClientMenu
         .Validate(value =>
         {
           if (value <= 0)
-          {
-            return ValidationResult.Error(
-              "[red]Amount must be greater than zero.[/]");
-          }
+            return ValidationResult.Error("[red]Amount must be greater than zero.[/]");
 
           return ValidationResult.Success();
         }));
 
     try
     {
-      _accountService.Withdraw(
-        client.Id,
-        amount);
+      _accountService.Withdraw(client.Id, amount);
 
       AnsiConsole.WriteLine();
 

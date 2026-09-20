@@ -53,14 +53,10 @@ public class AdminMenu
 
   private void ShowHeader(Admin admin)
   {
-    AnsiConsole.Write(
-      new FigletText("ATM")
-        .Centered()
-        .Color(Color.Aqua));
+    AnsiConsole.Write(new FigletText("ATM").Centered().Color(Color.Aqua));
 
-    AnsiConsole.Write(
-      new Rule(
-          $"[red]Admin Panel — {Markup.Escape(admin.Username)}[/]")
+    AnsiConsole.Write(new Rule(
+        $"[red]Admin Panel — {Markup.Escape(admin.Username)}[/]")
         .RuleStyle("red"));
 
     AnsiConsole.WriteLine();
@@ -72,9 +68,7 @@ public class AdminMenu
 
     AnsiConsole.Clear();
 
-    AnsiConsole.Write(
-      new Rule("[yellow]Pending Loans[/]")
-        .RuleStyle("yellow"));
+    AnsiConsole.Write(new Rule("[yellow]Pending Loans[/]").RuleStyle("yellow"));
 
     AnsiConsole.WriteLine();
 
@@ -88,7 +82,7 @@ public class AdminMenu
           .BorderColor(Color.Yellow)
           .Padding(1, 1));
 
-      Pause();
+      UiHelper.Pause();
       return;
     }
 
@@ -149,9 +143,7 @@ public class AdminMenu
 
     AnsiConsole.Clear();
 
-    AnsiConsole.Write(
-      new Rule("[cyan]Loan History[/]")
-        .RuleStyle("cyan"));
+    AnsiConsole.Write(new Rule("[cyan]Loan History[/]").RuleStyle("cyan"));
 
     AnsiConsole.WriteLine();
 
@@ -284,7 +276,7 @@ public class AdminMenu
           .BorderColor(Color.Green)
           .Padding(1, 1));
 
-        Pause();
+        UiHelper.Pause();
     }
     catch (Exception ex)
     {
@@ -313,7 +305,7 @@ private void ConfirmReject(LoanRequest loan, string username)
           .BorderColor(Color.Red)
           .Padding(1, 1));
 
-      Pause();
+      UiHelper.Pause();
     }
     catch (Exception ex)
     {
@@ -333,16 +325,6 @@ private void ConfirmReject(LoanRequest loan, string username)
         .BorderColor(Color.Red)
         .Padding(1, 1));
 
-    Pause();
-  }
-
-  private void Pause()
-  {
-    AnsiConsole.WriteLine();
-
-    AnsiConsole.MarkupLine(
-      "[grey]Press any key to continue...[/]");
-
-    Console.ReadKey(true);
+    UiHelper.Pause();
   }
 }

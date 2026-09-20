@@ -13,9 +13,7 @@ public class LoanRepository : ILoanRepository
   {
     _dataFolder = PathHelper.GetDataDirectory();
 
-    _filePath = Path.Combine(
-      _dataFolder,
-      "loan-requests.json");
+    _filePath = Path.Combine(_dataFolder, "loan-requests.json");
   }
 
   public List<LoanRequest> GetAll()
@@ -28,10 +26,7 @@ public class LoanRepository : ILoanRepository
       {
         string json = reader.ReadToEnd();
 
-        if (string.IsNullOrWhiteSpace(json))
-        {
-          return new List<LoanRequest>();
-        }
+        if (string.IsNullOrWhiteSpace(json)) return new List<LoanRequest>();
 
         return JsonSerializer.Deserialize<List<LoanRequest>>(json) ?? new List<LoanRequest>();
       }
@@ -46,8 +41,7 @@ public class LoanRepository : ILoanRepository
   public LoanRequest? GetById(Guid id)
   {
     List<LoanRequest> loanRequests = GetAll();
-    return loanRequests.FirstOrDefault(loan =>
-      loan.Id == id);
+    return loanRequests.FirstOrDefault(loan => loan.Id == id);
   }
 
   public List<LoanRequest> GetByClientId(Guid clientId)
@@ -72,10 +66,7 @@ public class LoanRepository : ILoanRepository
       loanRequests.FirstOrDefault(loan =>
         loan.Id == loanRequest.Id);
 
-    if (existingLoan is null)
-    {
-            return;
-    }
+    if (existingLoan is null) return;
 
     loanRequests[loanRequests.IndexOf(existingLoan)] = loanRequest;
 

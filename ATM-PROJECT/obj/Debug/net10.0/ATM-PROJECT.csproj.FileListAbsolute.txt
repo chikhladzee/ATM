@@ -17,3 +17,4 @@
 /home/amiko/Desktop/ATM-PROJECT/ATM-PROJECT/obj/Debug/net10.0/ATM-PROJECT.pdb
 /home/amiko/Desktop/ATM-PROJECT/ATM-PROJECT/obj/Debug/net10.0/ATM-PROJECT.genruntimeconfig.cache
 /home/amiko/Desktop/ATM-PROJECT/ATM-PROJECT/obj/Debug/net10.0/ref/ATM-PROJECT.dll
+/home/amiko/Desktop/ATM-PROJECT/ATM-PROJECT/obj/Debug/net10.0/ATM-PROJECT.sourcelink.json

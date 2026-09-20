@@ -18,13 +18,11 @@ public class AccountService
 
   public Account CreateAccount(Guid userId)
   {
-    Account? existingAccount =
-      _accountRepository.GetByUserId(userId);
+    Account? existingAccount = _accountRepository.GetByUserId(userId);
 
     if (existingAccount is not null)
     {
-      throw new InvalidOperationException(
-        "User already has an account.");
+      throw new InvalidOperationException("User already has an account.");
     }
 
     Account account = new Account
@@ -45,13 +43,11 @@ public class AccountService
 
   public decimal GetBalance(Guid userId)
   {
-    Account? account =
-      _accountRepository.GetByUserId(userId);
+    Account? account = _accountRepository.GetByUserId(userId);
 
     if (account is null)
     {
-      throw new InvalidOperationException(
-        "Account not found.");
+      throw new InvalidOperationException("Account not found.");
     }
 
     return account.Balance;
@@ -59,66 +55,49 @@ public class AccountService
 
   public void Deposit(Guid userId, decimal amount)
   {
-    Account? account =
-      _accountRepository.GetByUserId(userId);
+    Account? account = _accountRepository.GetByUserId(userId);
 
     if (account is null)
     {
-      throw new InvalidOperationException(
-        "Account not found.");
+      throw new InvalidOperationException("Account not found.");
     }
 
     account.Deposit(amount);
 
     _accountRepository.Update(account);
 
-    _transactionService.CreateTransaction(
-      userId,
-      TransactionType.Deposit,
-      amount);
+    _transactionService.CreateTransaction(userId, TransactionType.Deposit, amount);
   }
 
   public void Withdraw(Guid userId, decimal amount)
   {
-    Account? account =
-      _accountRepository.GetByUserId(userId);
+    Account? account = _accountRepository.GetByUserId(userId);
 
     if (account is null)
     {
-      throw new InvalidOperationException(
-        "Account not found.");
+      throw new InvalidOperationException("Account not found.");
     }
 
     account.Withdraw(amount);
 
     _accountRepository.Update(account);
 
-    _transactionService.CreateTransaction(
-      userId,
-      TransactionType.Withdraw,
-      amount);
+    _transactionService.CreateTransaction(userId, TransactionType.Withdraw, amount);
   }
 
-  public void DepositLoan(
-    Guid userId,
-    decimal amount)
+  public void DepositLoan(Guid userId, decimal amount)
   {
-    Account? account =
-      _accountRepository.GetByUserId(userId);
+    Account? account = _accountRepository.GetByUserId(userId);
 
     if (account is null)
     {
-      throw new InvalidOperationException(
-        "Account not found.");
+      throw new InvalidOperationException("Account not found.");
     }
 
     account.Deposit(amount);
 
     _accountRepository.Update(account);
 
-    _transactionService.CreateTransaction(
-      userId,
-      TransactionType.Loan,
-      amount);
+    _transactionService.CreateTransaction(userId, TransactionType.Loan, amount);
   }
 }

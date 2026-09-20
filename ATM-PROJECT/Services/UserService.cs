@@ -42,8 +42,7 @@ public class UserService
 
     if (UsernameExists(username))
     {
-      throw new InvalidOperationException(
-        "Username already exists.");
+      throw new InvalidOperationException("Username already exists.");
     }
 
     Client client = new Client
