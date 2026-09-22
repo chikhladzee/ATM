@@ -37,7 +37,7 @@ public class UserRepository : IUserRepository
     }
     catch (Exception ex)
     {
-      Console.WriteLine($"Error reading users: {ex.Message}");
+      Logger.Error($"Error reading users.json: {ex.Message}");
       return new List<UserData>();
     }
   }
@@ -102,7 +102,7 @@ public class UserRepository : IUserRepository
     }
     catch (Exception ex)
     {
-      Console.WriteLine($"Error saving users: {ex.Message}");
+      Logger.Error($"Error saving users.json: {ex.Message}");
     }
   }
 

@@ -37,8 +37,7 @@ public class AccountRepository : IAccountRepository
     }
     catch (Exception ex)
     {
-      Console.WriteLine($"Error reading accounts: {ex.Message}");
-
+      Logger.Error($"Error reading accounts.json: {ex.Message}");
       return new List<Account>();
     }
   }
@@ -99,7 +98,7 @@ public class AccountRepository : IAccountRepository
     }
     catch (Exception ex)
     {
-      Console.WriteLine($"Error saving accounts: {ex.Message}");
+      Logger.Error($"Error saving accounts.json: {ex.Message}");
     }
   }
 

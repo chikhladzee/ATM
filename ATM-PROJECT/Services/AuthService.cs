@@ -1,3 +1,4 @@
+using ATM_PROJECT.Helpers;
 using ATM_PROJECT.Models;
 using ATM_PROJECT.Models.Enums;
 using ATM_PROJECT.Services.Interfaces;
@@ -23,6 +24,8 @@ public class AuthService : IAuthService
 
     _accountService.CreateAccount(client.Id);
 
+    Logger.Info($"User '{client.Username}' registered successfully.");
+
     return client;
   }
 
@@ -30,11 +33,21 @@ public class AuthService : IAuthService
   {
     UserData? userData = _userService.GetByUsername(username);
 
-    if (userData is null) return null;
+    if (userData is null)
+    {
+      Logger.Warning($"Failed login attempt for username '{username}'.");
+      return null;
+    };
 
     bool passwordIsValid = BCrypt.Net.BCrypt.Verify(password, userData.PasswordHash);
 
-    if (!passwordIsValid) return null;
+    if (!passwordIsValid)
+    {
+      Logger.Warning($"Failed login attempt for username '{username}'. Invalid credentials.");
+      return null;
+    };
+
+    Logger.Info($"User '{username}' logged in successfully.");
 
     if (userData.Role == UserRole.Client)
     {

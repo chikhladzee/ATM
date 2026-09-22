@@ -1,4 +1,5 @@
-﻿using ATM_PROJECT.Models;
+﻿using ATM_PROJECT.Helpers;
+using ATM_PROJECT.Models;
 using ATM_PROJECT.Repositories;
 using ATM_PROJECT.Repositories.Interfaces;
 using ATM_PROJECT.Services;
@@ -12,15 +13,17 @@ ILoanRepository loanRepository = new LoanRepository();
 ITransactionRepository transactionRepository = new TransactionRepository();
 
 IUserService userService = new UserService(userRepository);
-ITransactionService transactionService = new TransactionService(transactionRepository);
-IAccountService accountService = new AccountService(accountRepository, transactionService);
-ILoanService loanService = new LoanService(loanRepository, accountService);
+ITransactionService transactionService = new TransactionService(transactionRepository, userRepository);
+IAccountService accountService = new AccountService(accountRepository, transactionService, userRepository);
+ILoanService loanService = new LoanService(loanRepository, accountService, userRepository);
 IAuthService authService = new AuthService(userService, accountService);
 
 AuthMenu authMenu = new AuthMenu(authService);
 ClientMenu clientMenu = new ClientMenu(accountService, loanService, transactionService);
 AdminMenu adminMenu = new AdminMenu(loanService, userService);
 MainMenu mainMenu = new MainMenu(clientMenu, adminMenu);
+
+Logger.Info("ATM application started.");
 
 while (true)
 {
@@ -37,3 +40,5 @@ AnsiConsole.Write(
   new FigletText("Goodbye")
     .Centered()
     .Color(Color.Aqua));
+
+Logger.Info("ATM application stopped.");

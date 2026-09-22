@@ -1,3 +1,4 @@
+using ATM_PROJECT.Helpers;
 using ATM_PROJECT.Models;
 using ATM_PROJECT.Repositories.Interfaces;
 using ATM_PROJECT.Services.Interfaces;
@@ -43,6 +44,7 @@ public class UserService : IUserService
 
     if (UsernameExists(username))
     {
+      Logger.Warning($"Registration failed. Username '{username}' already exists.");
       throw new InvalidOperationException("Username already exists.");
     }
 
@@ -62,6 +64,8 @@ public class UserService : IUserService
     };
 
     _userRepository.Add(userData);
+
+    Logger.Info($"Client '{client.Username}' created.");
 
     return client;
   }

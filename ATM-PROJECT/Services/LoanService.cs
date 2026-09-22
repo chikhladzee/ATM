@@ -1,3 +1,4 @@
+using ATM_PROJECT.Helpers;
 using ATM_PROJECT.Models;
 using ATM_PROJECT.Models.Enums;
 using ATM_PROJECT.Repositories.Interfaces;
@@ -9,15 +10,21 @@ public class LoanService : ILoanService
 {
   private readonly ILoanRepository _loanRepository;
   private readonly IAccountService _accountService;
+  private readonly IUserRepository _userRepository;
 
-  public LoanService(ILoanRepository loanRepository, IAccountService accountService)
+  public LoanService(ILoanRepository loanRepository, IAccountService accountService, IUserRepository userRepository)
   {
     _loanRepository = loanRepository;
     _accountService = accountService;
+    _userRepository = userRepository;
   }
 
   public LoanRequest CreateLoanRequest(Guid clientId, decimal amount)
   {
+    UserData? user = _userRepository.GetById(clientId);
+
+    string username = user?.Username ?? clientId.ToString();
+
     if (amount <= 0)
     {
       throw new ArgumentException("Loan amount must be greater than zero.");
@@ -32,6 +39,8 @@ public class LoanService : ILoanService
     };
 
     _loanRepository.Add(loanRequest);
+
+    Logger.Info($"User '{username}' requested a loan of ${amount:N2}. Loan ID: '{loanRequest.Id}'.");
 
     return loanRequest;
   }
@@ -64,11 +73,17 @@ public class LoanService : ILoanService
 
     if (loanRequest is null)
     {
+      Logger.Warning($"Attempt to approve non-existing loan '{loanId}'.");
       throw new InvalidOperationException("Loan request not found.");
     }
 
+    // get username
+    UserData? user = _userRepository.GetById(loanRequest.ClientId);
+    string username = user?.Username ?? loanRequest.ClientId.ToString();
+
     if (loanRequest.Status != LoanStatus.Pending)
     {
+      Logger.Warning($"Attempt to approve loan '{loanId}' with status '{loanRequest.Status}'.");
       throw new InvalidOperationException("Only pending loans can be approved.");
     }
 
@@ -77,6 +92,8 @@ public class LoanService : ILoanService
     loanRequest.Status = LoanStatus.Approved;
 
     _loanRepository.Update(loanRequest);
+
+    Logger.Info($"Loan '{loanRequest.Id}' approved. Client: '{username}', Amount: ${loanRequest.Amount:N2}.");
   }
 
   public void RejectLoan(Guid loanId)
@@ -85,16 +102,25 @@ public class LoanService : ILoanService
 
     if (loanRequest is null)
     {
+      Logger.Warning($"Attempt to reject non-existing loan '{loanId}'.");
       throw new InvalidOperationException("Loan request not found.");
     }
 
+    // get username
+    UserData? user = _userRepository.GetById(loanRequest.ClientId);
+    string username = user?.Username ?? loanRequest.ClientId.ToString();
+
     if (loanRequest.Status != LoanStatus.Pending)
     {
+      Logger.Warning($"Attempt to reject loan '{loanId}' with status '{loanRequest.Status}'.");
       throw new InvalidOperationException("Only pending loans can be rejected.");
     }
 
     loanRequest.Status = LoanStatus.Rejected;
 
     _loanRepository.Update(loanRequest);
+
+
+    Logger.Info($"Loan '{loanRequest.Id}' rejected. Client: '{username}', Amount: ${loanRequest.Amount:N2}.");
   }
 }

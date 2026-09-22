@@ -34,8 +34,7 @@ public class TransactionRepository : ITransactionRepository
     }
     catch (Exception ex)
     {
-      Console.WriteLine($"Error reading transactions: {ex.Message}");
-
+      Logger.Error($"Error reading transactions.json: {ex.Message}");
       return new List<Transaction>();
     }
   }
@@ -85,7 +84,7 @@ public class TransactionRepository : ITransactionRepository
     }
     catch (Exception ex)
     {
-      Console.WriteLine($"Error saving transactions: {ex.Message}");
+      Logger.Error($"Error saving transactions.json: {ex.Message}");
     }
   }
 

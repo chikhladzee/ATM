@@ -34,7 +34,7 @@ public class LoanRepository : ILoanRepository
     }
     catch (Exception ex)
     {
-      Console.WriteLine($"Error reading loan requests: {ex.Message}");
+      Logger.Error($"Error reading loan-requests.json: {ex.Message}");
       return new List<LoanRequest>();
     }
   }
@@ -94,7 +94,7 @@ public class LoanRepository : ILoanRepository
     }
     catch (Exception ex)
     {
-      Console.WriteLine($"Error saving loan requests: {ex.Message}");
+      Logger.Error($"Error saving loan-requests.json: {ex.Message}");
     }
   }
 
