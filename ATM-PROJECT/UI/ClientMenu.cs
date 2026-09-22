@@ -1,20 +1,18 @@
 using ATM_PROJECT.Helpers;
 using ATM_PROJECT.Models;
 using ATM_PROJECT.Models.Enums;
-using ATM_PROJECT.Services;
+using ATM_PROJECT.Services.Interfaces;
 using Spectre.Console;
 
 namespace ATM_PROJECT.UI;
 
 public class ClientMenu
 {
-  private readonly AccountService _accountService;
-  private readonly LoanService _loanService;
-  private readonly TransactionService _transactionService;
+  private readonly IAccountService _accountService;
+  private readonly ILoanService _loanService;
+  private readonly ITransactionService _transactionService;
 
-  public ClientMenu(AccountService accountService,
-    LoanService loanService,
-    TransactionService transactionService)
+  public ClientMenu(IAccountService accountService, ILoanService loanService, ITransactionService transactionService)
   {
     _accountService = accountService;
     _loanService = loanService;
@@ -280,14 +278,10 @@ public class ClientMenu
     {
       string status = loan.Status switch
       {
-        LoanStatus.Pending =>
-          "[yellow]Pending[/]",
-        LoanStatus.Approved =>
-          "[green]Approved[/]",
-        LoanStatus.Rejected =>
-          "[red]Rejected[/]",
-        _ =>
-          "[grey]Unknown[/]"
+        LoanStatus.Pending => "[yellow]Pending[/]",
+        LoanStatus.Approved => "[green]Approved[/]",
+        LoanStatus.Rejected => "[red]Rejected[/]",
+        _ => "[grey]Unknown[/]"
       };
 
       table.AddRow(

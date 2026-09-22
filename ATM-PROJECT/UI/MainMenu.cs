@@ -7,9 +7,7 @@ public class MainMenu
   private readonly ClientMenu _clientMenu;
   private readonly AdminMenu _adminMenu;
 
-  public MainMenu(
-    ClientMenu clientMenu,
-    AdminMenu adminMenu)
+  public MainMenu(ClientMenu clientMenu, AdminMenu adminMenu)
   {
     _clientMenu = clientMenu;
     _adminMenu = adminMenu;

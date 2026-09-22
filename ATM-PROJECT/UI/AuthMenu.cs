@@ -1,15 +1,15 @@
 using ATM_PROJECT.Helpers;
 using ATM_PROJECT.Models;
-using ATM_PROJECT.Services;
+using ATM_PROJECT.Services.Interfaces;
 using Spectre.Console;
 
 namespace ATM_PROJECT.UI;
 
 public class AuthMenu
 {
-  private readonly AuthService _authService;
+  private readonly IAuthService _authService;
 
-  public AuthMenu(AuthService authService)
+  public AuthMenu(IAuthService authService)
   {
     _authService = authService;
   }

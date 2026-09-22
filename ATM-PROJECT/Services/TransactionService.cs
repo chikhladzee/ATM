@@ -1,10 +1,11 @@
 using ATM_PROJECT.Models;
 using ATM_PROJECT.Models.Enums;
-using ATM_PROJECT.Repositories;
+using ATM_PROJECT.Repositories.Interfaces;
+using ATM_PROJECT.Services.Interfaces;
 
 namespace ATM_PROJECT.Services;
 
-public class TransactionService
+public class TransactionService : ITransactionService
 {
   private readonly ITransactionRepository _transactionRepository;
 

@@ -1,18 +1,17 @@
 using ATM_PROJECT.Helpers;
 using ATM_PROJECT.Models;
 using ATM_PROJECT.Models.Enums;
-using ATM_PROJECT.Services;
+using ATM_PROJECT.Services.Interfaces;
 using Spectre.Console;
 
 namespace ATM_PROJECT.UI;
 
 public class AdminMenu
 {
-  private readonly LoanService _loanService;
-  private readonly UserService _userService;
+  private readonly ILoanService _loanService;
+  private readonly IUserService _userService;
 
-  public AdminMenu(LoanService loanService,
-    UserService userService)
+  public AdminMenu(ILoanService loanService, IUserService userService)
   {
     _loanService = loanService;
     _userService = userService;

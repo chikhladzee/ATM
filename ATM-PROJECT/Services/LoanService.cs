@@ -1,16 +1,16 @@
 using ATM_PROJECT.Models;
 using ATM_PROJECT.Models.Enums;
-using ATM_PROJECT.Repositories;
+using ATM_PROJECT.Repositories.Interfaces;
+using ATM_PROJECT.Services.Interfaces;
 
 namespace ATM_PROJECT.Services;
 
-public class LoanService
+public class LoanService : ILoanService
 {
   private readonly ILoanRepository _loanRepository;
-  private readonly AccountService _accountService;
+  private readonly IAccountService _accountService;
 
-  public LoanService(ILoanRepository loanRepository,
-    AccountService accountService)
+  public LoanService(ILoanRepository loanRepository, IAccountService accountService)
   {
     _loanRepository = loanRepository;
     _accountService = accountService;

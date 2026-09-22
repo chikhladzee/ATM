@@ -1,9 +1,10 @@
 using ATM_PROJECT.Models;
-using ATM_PROJECT.Repositories;
+using ATM_PROJECT.Repositories.Interfaces;
+using ATM_PROJECT.Services.Interfaces;
 
 namespace ATM_PROJECT.Services;
 
-public class UserService
+public class UserService : IUserService
 {
   private readonly IUserRepository _userRepository;
 

@@ -4,5 +4,11 @@
     "Username": "admin",
     "PasswordHash": "$2a$11$VXPTWUn0UUCxfToMJG3xkOUFHBuR6dDizyW.H8kExTOrToi1sVin.",
     "Role": 1
+  },
+  {
+    "Id": "5c65b49d-b477-4fc6-8e12-d31fe8796027",
+    "Username": "amiko",
+    "PasswordHash": "$2a$11$fao3QmSj/2TCoZT/dZnwj.fvroLPAOewOESVCym20R2T10QMmoIGu",
+    "Role": 0
   }
 ]

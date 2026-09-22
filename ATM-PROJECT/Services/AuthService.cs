@@ -1,14 +1,15 @@
 using ATM_PROJECT.Models;
 using ATM_PROJECT.Models.Enums;
+using ATM_PROJECT.Services.Interfaces;
 
 namespace ATM_PROJECT.Services;
 
-public class AuthService
+public class AuthService : IAuthService
 {
-  private readonly UserService _userService;
-  private readonly AccountService _accountService;
+  private readonly IUserService _userService;
+  private readonly IAccountService _accountService;
 
-  public AuthService(UserService userService, AccountService accountService)
+  public AuthService(IUserService userService, IAccountService accountService)
   {
     _userService = userService;
     _accountService = accountService;

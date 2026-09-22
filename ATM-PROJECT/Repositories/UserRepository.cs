@@ -1,6 +1,7 @@
 using System.Text.Json;
 using ATM_PROJECT.Helpers;
 using ATM_PROJECT.Models;
+using ATM_PROJECT.Repositories.Interfaces;
 
 namespace ATM_PROJECT.Repositories;
 
